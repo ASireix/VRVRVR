@@ -18,11 +18,11 @@ public class HandMouvementLeft : MonoBehaviour
     {
         controller = GetComponent<ActionBasedController>();
 
-        controller.selectAction.action.started += ctx => Select_Action(1f);
-        controller.selectAction.action.canceled += ctx => Select_Action(0f);
+        controller.selectAction.action.started += ctx => Activate_Action(1f);
+        controller.selectAction.action.canceled += ctx => Activate_Action(0f);
 
-        controller.activateAction.action.started += ctx => Activate_Action(1f);
-        controller.activateAction.action.canceled += ctx => Activate_Action(0f);
+        controller.activateAction.action.started += ctx => Select_Action(1f);
+        controller.activateAction.action.canceled += ctx => Select_Action(0f);
 
 
     }

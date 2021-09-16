@@ -15,19 +15,24 @@ public class PlayerMouvement : MonoBehaviour
 
     Vector2 move;
 
-    //public Rigidbody body;
+    public Rigidbody body;
 
     float turnSmoothVelocity;
 
     public float turnSmoothTime = .1f;
 
+    public Transform left;
+    public Transform right;
+
     // Start is called before the first frame update
     void Awake()
     {
         controls = new XRIDefaultInputActions();
-
+        body = GetComponent<Rigidbody>();
         controls.XRILeftHand.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.XRILeftHand.Move.canceled += ctx => move = Vector2.zero;
+        Physics.IgnoreCollision(left.GetComponent<Collider>(), GetComponent<Collider>());
+        Physics.IgnoreCollision(right.GetComponent<Collider>(), GetComponent<Collider>());
     }
 
     // Update is called once per frame
@@ -41,9 +46,9 @@ public class PlayerMouvement : MonoBehaviour
 
         if (movement.magnitude >= .1f)
         {
-            transform.Translate(movement * speed * Time.deltaTime);
-            /*body.MovePosition(transform.position + (movement * speed * Time.deltaTime));
-            float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
+            //transform.Translate(movement * speed * Time.deltaTime);
+            body.MovePosition(transform.position + (movement * speed * Time.deltaTime));
+            /*float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             body.MoveRotation(Quaternion.Euler(0f, angle, 0f));*/
 

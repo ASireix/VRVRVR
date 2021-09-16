@@ -768,17 +768,6 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""92bb5b8f-bf48-4dab-af05-50a865773895"",
-                    ""path"": ""<XRController>{RightHand}/triggerPressed"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Generic XR Controller"",
-                    ""action"": ""UI Press"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""d6c08c3d-3d41-4695-994d-1ac9016a5a9e"",
                     ""path"": ""<XRController>{RightHand}/Primary2DAxis"",
                     ""interactions"": ""Sector(directions=12,sweepBehavior=1),Sector(directions=2,sweepBehavior=2)"",
@@ -908,6 +897,17 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Translate Anchor"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33afe1bf-06a1-4e17-97c2-f59ee0541fe2"",
+                    ""path"": ""<XRController>{RightHand}/gripPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Generic XR Controller"",
+                    ""action"": ""UI Press"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }

@@ -64,8 +64,11 @@ public class Hand : MonoBehaviour
         q.ToAngleAxis(out float angle, out Vector3 axis);
         if (angle>180f){
             angle -= 360f;
+            
         }
         body.angularVelocity = axis * (angle * Mathf.Deg2Rad * rotateSpeed);
+
+
     }
 
     internal GameObject GetGameObject(){
