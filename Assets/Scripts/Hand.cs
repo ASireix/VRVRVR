@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hand : MonoBehaviour
 {
     private Animator anim;
+    private BoxCollider col;
 
     [SerializeField] private GameObject followObject;
     [SerializeField] private float followSpeed = 30f;
@@ -18,6 +19,7 @@ public class Hand : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        col = GetComponent<BoxCollider>();
 
         followTarget = followObject.transform;
         body = GetComponent<Rigidbody>();
@@ -43,6 +45,11 @@ public class Hand : MonoBehaviour
     internal void SetGrip(float f)
     {
         anim.SetFloat("Grip", f);
+        if (f == 1){
+            col.isTrigger = true;
+        }else{
+            col.isTrigger = false;
+        }
     }
 
     private void MovePhysics()
@@ -55,7 +62,14 @@ public class Hand : MonoBehaviour
         var rotationWithOffset = followTarget.rotation * Quaternion.Euler(rotationOffset);
         var q = rotationWithOffset * Quaternion.Inverse(body.rotation);
         q.ToAngleAxis(out float angle, out Vector3 axis);
+        if (angle>180f){
+            angle -= 360f;
+        }
         body.angularVelocity = axis * (angle * Mathf.Deg2Rad * rotateSpeed);
+    }
+
+    internal GameObject GetGameObject(){
+        return gameObject;
     }
 }
 
