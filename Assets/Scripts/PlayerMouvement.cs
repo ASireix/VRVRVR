@@ -15,9 +15,9 @@ public class PlayerMouvement : MonoBehaviour
 
     Vector2 move;
 
-    public Rigidbody body;
+    //public Rigidbody body;
 
-     float turnSmoothVelocity;
+    float turnSmoothVelocity;
 
     public float turnSmoothTime = .1f;
 
@@ -41,8 +41,9 @@ public class PlayerMouvement : MonoBehaviour
 
         if (movement.magnitude >= .1f)
         {
-            body.MovePosition(transform.position + (movement * speed * Time.deltaTime));
-            /*float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
+            transform.Translate(movement * speed * Time.deltaTime);
+            /*body.MovePosition(transform.position + (movement * speed * Time.deltaTime));
+            float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             body.MoveRotation(Quaternion.Euler(0f, angle, 0f));*/
 
