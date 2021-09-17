@@ -13,6 +13,8 @@ public class Quiz : MonoBehaviour
     private List<string> l;
     public TMP_Text textBox;
 
+    private 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,7 @@ public class Quiz : MonoBehaviour
         //Question 2
         l = new List<string>();
         l.Add("-2021\\n");l.Add("-1790\\n");l.Add("-1797\\n");l.Add("-1802\\n");
-        questions.Add(("Quand est né Champollion ?\\n \\n",l,1));
+        questions.Add(("Quand est né Champollion ?<\n \n>",l,1));
 
     }
 
