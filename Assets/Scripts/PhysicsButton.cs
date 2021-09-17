@@ -13,7 +13,8 @@ public class PhysicsButton : MonoBehaviour
     private Vector3 startPos;
     private ConfigurableJoint joint;
 
-    public UnityEvent onPressed, onReleased;
+    public UnityEvent onPressed;
+    public UnityEvent onReleased;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +52,7 @@ public class PhysicsButton : MonoBehaviour
         isPressed = true;
         onPressed.Invoke();
         Debug.Log("pressed");
+        
     }
 
     private void Released()
