@@ -16,7 +16,7 @@ public class Quiz : MonoBehaviour
     private bool isRunning = false;
     public bool pressed = false; // modifié quand un bouton de réponse est appuyé
 
-    public GameObject quiz, carte;
+    public GameObject quiz, carte, surprise;
     public Answer reponses;
 
     // Start is called before the first frame update
@@ -97,6 +97,8 @@ public class Quiz : MonoBehaviour
         isRunning = false;
     }
     IEnumerator FadeIn(){
+        yield return new WaitForSeconds(8f);
+        carte.SetActive(true);
         for (float ft = 0f; ft<=1f; ft +=.1f){
             Color c = img.color;
             c.a = ft;
@@ -104,6 +106,11 @@ public class Quiz : MonoBehaviour
             Debug.Log(ft);
             yield return null; 
         }
+    }
+
+    public void Nice()
+    {
+        surprise.SetActive(true);
     }
 
     private void DisplayAnswers() {
@@ -119,7 +126,6 @@ public class Quiz : MonoBehaviour
         {
             displayAnswers.GetComponent<TMP_Text>().text = "Félicitations! Vous voilà presque incollable sur l'histoire de la pierre de Rosette et son utilisation par Jean-François Champollion!Il ne vous reste plus qu'une question :Placez Rosette sur la carte de l'Egypte!";
             // trigger la map
-            carte.SetActive(true);
             StartCoroutine("FadeIn");
         }
         else {
